@@ -1,0 +1,6 @@
+{
+  "name": "YS-WebFLY — Real-Time 3D Airplane Window Simulator",
+  "description": "Real-time 3D airplane window seat simulator and 2D flight tracker powered by CesiumJS, OSM 3D Buildings, and live Airplanes.live ADS-B telemetry.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
