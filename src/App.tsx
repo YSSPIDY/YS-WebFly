@@ -83,10 +83,7 @@ export default function App() {
         const lat = sector.centerLat;
         const lon = sector.centerLon;
         const response = await fetch(
-          'https://api.allorigins.win/raw?url=' +
-            encodeURIComponent(
-              `https://api.adsb.lol/v2/point/${lat}/${lon}/150?t=${Date.now()}`
-            )
+          `https://api.adsb.lol/v2/point/${lat}/${lon}/150?t=${Date.now()}`
         );
 
         if (response.ok) {
@@ -169,7 +166,7 @@ export default function App() {
     };
   }, [pollAirplanesLiveSector]);
 
-  // True Live Flight Search via AllOrigins + https://api.adsb.lol/v2/callsign/{callsign}
+  // True Live Flight Search via https://api.adsb.lol/v2/callsign/{callsign}
   const handleSearchCallsign = useCallback(
     async (rawCallsign: string) => {
       const callsign = sanitizeCallsign(rawCallsign);
@@ -180,10 +177,7 @@ export default function App() {
 
       try {
         const response = await fetch(
-          'https://api.allorigins.win/raw?url=' +
-            encodeURIComponent(
-              `https://api.adsb.lol/v2/callsign/${callsign}?t=${Date.now()}`
-            )
+          `https://api.adsb.lol/v2/callsign/${callsign}?t=${Date.now()}`
         );
 
         if (response.status === 404) {
