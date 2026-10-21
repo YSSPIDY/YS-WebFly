@@ -71,7 +71,7 @@ export default function App() {
     }, 7000);
   }, []);
 
-  // True Live Sector Polling:
+  // True Live Sector Polling via Netlify Proxy (/api/adsb/...):
   // Polls https://api.adsb.lol/v2/point/{lat}/{lon}/150 every 10 seconds.
   // Only renders aircraft actually returned by data.ac (zero mock/placeholder flights).
   const pollAirplanesLiveSector = useCallback(
@@ -83,7 +83,7 @@ export default function App() {
         const lat = sector.centerLat;
         const lon = sector.centerLon;
         const response = await fetch(
-          `https://api.adsb.lol/v2/point/${lat}/${lon}/150?t=${Date.now()}`
+          `/api/adsb/v2/point/${lat}/${lon}/150?t=${Date.now()}`
         );
 
         if (response.ok) {
@@ -166,7 +166,7 @@ export default function App() {
     };
   }, [pollAirplanesLiveSector]);
 
-  // True Live Flight Search via https://api.adsb.lol/v2/callsign/{callsign}
+  // True Live Flight Search via Netlify Proxy (/api/adsb/v2/callsign/{callsign})
   const handleSearchCallsign = useCallback(
     async (rawCallsign: string) => {
       const callsign = sanitizeCallsign(rawCallsign);
@@ -177,7 +177,7 @@ export default function App() {
 
       try {
         const response = await fetch(
-          `https://api.adsb.lol/v2/callsign/${callsign}?t=${Date.now()}`
+          `/api/adsb/v2/callsign/${callsign}?t=${Date.now()}`
         );
 
         if (response.status === 404) {
