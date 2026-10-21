@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/api/adsb/*"
+  to = "https://api.adsb.lol/:splat"
+  status = 200
+  force = true
